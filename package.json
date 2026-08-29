@@ -1,0 +1,24 @@
+{
+  "name": "playlist-api",
+  "version": "1.0.0",
+  "description": "A simple REST API for managing users, playlists, and music.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leticiabottamartins-bot/playlist-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/leticiabottamartins-bot/playlist-api/issues"
+  },
+  "homepage": "https://github.com/leticiabottamartins-bot/playlist-api#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
