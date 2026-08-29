@@ -1,0 +1,40 @@
+services:
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - DB_HOST=database
+      - DB_USER=usuario
+      - DB_PASS=senha
+      - DB_NAME=playlist_db
+      - DB_PORT=5432
+    ports:
+      - "3000:3000"
+    depends_on:
+      database:
+        condition: service_healthy
+
+  database:
+    image: postgres:18-alpine
+    volumes:
+      - db_data:/var/lib/postgresql
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+    environment:
+      - POSTGRES_USER=usuario
+      - POSTGRES_PASSWORD=senha
+      - POSTGRES_DB=playlist_db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U usuario -d playlist_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  db_data:
