@@ -5,6 +5,7 @@ const app = express();
 
 app.use(express.json());
 app.use("/usuarios", require("./routes/usuario"));
+app.use("/playlists", require("./routes/playlist"));
 
 app.get("/", (req, res) => {
     return res.json({
